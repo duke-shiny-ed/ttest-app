@@ -1,0 +1,12 @@
+name: example-quiz
+title: example-quiz
+username:
+account: matackett
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2574873
+bundleId: 3395656
+url: https://matackett.shinyapps.io/example-quiz/
+when: 1594825697.27446
+asMultiple: FALSE
+asStatic: FALSE
