@@ -2,7 +2,6 @@ library(shiny)
 library(tidyverse)
 library(gridExtra)
 ui <- pageWithSidebar(
-
   # Title ----
   headerPanel("Robustness of Assumptions for Two Sample Inference"),
 
@@ -53,8 +52,14 @@ ui <- pageWithSidebar(
         title = "Intervals of Differences",
         fluidRow(
           withMathJax(),
-          helpText('An irrational number \\(\\sqrt{2}\\)
-           and a fraction $$1-\\frac{1}{2}$$'),
+          tags$div(HTML("<script type='text/x-mathjax-config'>
+                MathJax.Hub.Config({
+                tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+                });
+                        </script>")),
+          helpText('This is inline: An irrational number $\\sqrt{2}$
+           and a fraction $1-\\frac{1}{2}$'),
+          helpText('This is on a new line: a fraction $$1-\\frac{1}{2}$$'),
 
           column(width = 12,
                  plotOutput("int.dist", height = "500px"),
@@ -337,7 +342,7 @@ server <- function(input, output, session) {
 
   output$mathtext <- renderUI({
     withMathJax(
-      helpText('This is example text: $$e^{i \\pi} + 1 = 0$$'))
+      helpText('This equation is inline: $e^{i \\pi} + 1 = 0$, and this equation is on a new line $$e^{x} = 0$$'))
   })
 }
 shinyApp(ui, server)
